@@ -8,7 +8,7 @@ function Header() {
         <div className="header_content">
             <div className="header_left">
                 <div className="header_left_content">
-                    <a href='http://localhost:3000/'>
+                    <a href='/Home'>
                         <h1>The Bookstore</h1>
                     </a>
                 </div>
