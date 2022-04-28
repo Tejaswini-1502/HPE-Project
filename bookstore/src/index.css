@@ -4,6 +4,7 @@
 :root{
   --body: #a9f4d5c2;
   --header: #41B3A3;
+  --header_shade1: #348b7f;
   --text: #dfdddd;
   --text1: #35292d;
   --icon: #E27D60;
@@ -16,7 +17,7 @@ html{
   margin: 0px;
   border: 0px;
   padding: 0px;
-  overflow-x: hidden; 
+  /* overflow-x: hidden;  */
 }
 
 *{
@@ -65,7 +66,7 @@ code {
 
 .header .header_content .header_left .header_left_content a{
   text-decoration: none;
-  color: var(--header);
+  color: var(--header_shade1);
   width: 100%;
 }
 
@@ -113,10 +114,9 @@ code {
   display: flex;
   position: sticky;
   top: 0;
-  overflow: hidden;
   padding: 0.5em 0;
   background-color: var(--header);
-  z-index: 3;
+  z-index: 2;
 }
 
 .navbar .navbar_content{
@@ -132,6 +132,7 @@ code {
 
 .navbar .navbar_content ul li{
   float: left;
+  margin: 0 2.5em;
 }
 
 .navbar .navbar_content ul li a{
@@ -139,8 +140,54 @@ code {
   color: var(--text);
   font-size: 18px;
   font-family: 'Roboto Slab';
-  margin: 0 2em;
-  padding: 0 1em;
+  padding: 0.5em;
+  border-radius: 10px;
+  transition: 0.2s ease-in;
+}
+
+.navbar .navbar_content ul li a:hover{
+  color: var(--header);
+  background-color: var(--text);
+  transition: 0.3s linear;
+  border-radius: 0;
+}
+
+.navbar .navbar_content ul .genre{
+  position: relative;
+  margin-bottom: 0;
+}
+
+.navbar .navbar_content ul .genre:hover .genre_dropdown{
+  display: block;
+  visibility: visible;
+  top: 45px;
+}
+
+.navbar .navbar_content ul .genre .genre_dropdown{
+  background-color: #dfdddd;
+  position: absolute;
+  display: none;
+  visibility: hidden;
+  padding-left: 0;
+}
+
+.navbar .navbar_content ul .genre .genre_dropdown li{
+  margin: 0;
+  padding: 0 0.5em;
+  width: 100%;
+}
+
+.navbar .navbar_content ul .genre .genre_dropdown li a{
+  width: 100%;
+  color: var(--text1);
+  font-size: medium;
+  transition: none;
+}
+
+.navbar .navbar_content ul .genre .genre_dropdown li:hover,
+.navbar .navbar_content ul .genre .genre_dropdown li a:hover{
+  background-color: #c0c0c0;
+  transition: none;
 }
 
 /* Home Content */
