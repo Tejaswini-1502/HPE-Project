@@ -13,7 +13,7 @@ function ContentSection(props) {
             </div>
             <div className="book_sections_content" style={{ display: "flex", flexWrap: "wrap" }}>
                 {
-                    props.data.slice(0, 4).map((book) => {
+                    props.data.slice(0, 5).map((book) => {
                         return <BookCard book={book}/>
                     })
                 }
