@@ -4,7 +4,7 @@
 :root{
   --body: #a9f4d5c2;
   --header: #41B3A3;
-  --header_shade1: #348b7f;
+  --header_shade1: #2c9e8f;
   --text: #dfdddd;
   --text1: #35292d;
   --icon: #E27D60;
@@ -17,13 +17,11 @@ html{
   margin: 0px;
   border: 0px;
   padding: 0px;
-  /* overflow-x: hidden;  */
 }
 
 *{
   margin: 0;
   padding: 0;
-  
 }
 
 body {
@@ -32,8 +30,7 @@ body {
   margin: 0px;
   padding: 0px;
   border: 0px;
-  background-color: var(--body) !important;
-  /* overflow-x: hidden; */
+  background-color: var(--body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -42,11 +39,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace;
 }
 
+.link, .link:hover{
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Header */
 .header{
   display: block;
-  /* position: sticky;
-  top: 0; */
   margin-bottom: 0;
 }
 
@@ -64,13 +64,13 @@ code {
   float: left;
 }
 
-.header .header_content .header_left .header_left_content a{
+.header .header_content .header_left .header_left_content .link{
   text-decoration: none;
   color: var(--header_shade1);
   width: 100%;
 }
 
-.header .header_content .header_left a h1{
+.header .header_content .header_left .link h1{
   cursor: pointer;
   font-family: 'Special Elite', cursive;
   margin: 0;
@@ -89,7 +89,7 @@ code {
   margin-bottom: 0.5em;
 }
 
-.header .header_content .header_right .header_right_content a{
+.header .header_content .header_right .header_right_content .link{
   text-decoration: none;
   color: var(--header);
   cursor: pointer;
@@ -99,13 +99,13 @@ code {
   transition: 0.2s;
 }
 
-.header .header_content .header_right .header_right_content a:hover{
+.header .header_content .header_right .header_right_content .link:hover{
   background-color: var(--header);
   color: var(--icon1);
   transition: 0.3s;
 }
 
-.header .header_content .header_right .header_right_content a i{
+.header .header_content .header_right .header_right_content .link i{
   font-size: 30px;
 }
 
@@ -135,7 +135,7 @@ code {
   margin: 0 2.5em;
 }
 
-.navbar .navbar_content ul li a{
+.navbar .navbar_content ul li .link{
   text-decoration: none;
   color: var(--text);
   font-size: 18px;
@@ -145,7 +145,7 @@ code {
   transition: 0.2s ease-in;
 }
 
-.navbar .navbar_content ul li a:hover{
+.navbar .navbar_content ul li .link:hover{
   color: var(--header);
   background-color: var(--text);
   transition: 0.3s linear;
@@ -177,7 +177,7 @@ code {
   width: 100%;
 }
 
-.navbar .navbar_content ul .genre .genre_dropdown li a{
+.navbar .navbar_content ul .genre .genre_dropdown li .link{
   width: 100%;
   color: var(--text1);
   font-size: medium;
@@ -185,7 +185,7 @@ code {
 }
 
 .navbar .navbar_content ul .genre .genre_dropdown li:hover,
-.navbar .navbar_content ul .genre .genre_dropdown li a:hover{
+.navbar .navbar_content ul .genre .genre_dropdown li .link:hover{
   background-color: #c0c0c0;
   transition: none;
 }
@@ -271,7 +271,7 @@ code {
 }
 
 .home .home_content .book_sections .book_sections_content{
-  background-color: var(--text1);
+  /* background-color: var(--text1); */
   padding: 0.7em;
   margin: 0 1.5em;
   border-radius: 5px;
@@ -279,10 +279,85 @@ code {
   justify-content: space-between;
 }
 
-.home .home_content .book_sections .book_sections_content .book_card_img{
-  /* width: 13rem; */
+.book_card:hover{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.2s;
+}
+
+.book_card .book_card_img{
   height: 14rem;
-  background-color: rgb(81, 81, 81);
+}
+
+/* Book Page */
+.book_details{
+  margin: 5em auto;
+  padding: 3em 5em;
+  background-color: #eedfdfa4;
+}
+
+.book_details .book_details_content{
+  display: flex;
+}
+
+.book_details .book_details_content .book_img{
+  width: 280px;
+  margin: 2em;
+}
+
+.book_details .book_details_content .book_img img{
+  width: 100%;
+}
+
+.book_details .book_details_content .book_info,
+.book_details .book_description,
+.book_details .other_details{
+  margin: 2em;
+  font-family: 'Roboto Slab';
+}
+
+.book_details .book_details_content .book_info .book_title h2{
+  font-weight: 800;
+}
+
+.book_details .book_details_content .book_info .book_title .book_rating i{
+  color: #20dbac;
+  font-size: 27px;
+  margin: auto 0.25em;
+}
+
+.book_details .book_description h4,
+.book_details .other_details h4{
+  font-weight: 600;
+}
+
+.book_details .book_description p{
+  text-align: justify;
+  padding: 1rem;
+}
+
+.book_details .other_details{
+  display: flex;
+}
+
+.book_details .other_details p{
+  padding-left: 1rem;
+  /* line-height: 8px; */
+}
+
+.book_details .other_details h4{
+  padding-bottom: 1rem;
+}
+
+.book_details .other_details .details1{
+  width: 40%;
+}
+
+.book_details .other_details .details1 p{
+  line-height: 12px;
+}
+
+.book_details .other_details .details2{
+  width: 60%;
 }
 
 /* Footer */
@@ -290,4 +365,20 @@ code {
   width: 100%;
   padding: 2em;
   background-color: var(--header);
+  text-align: center;
+  color: var(--text);
+  font-family: 'Roboto Slab';
+}
+
+.footer i{
+  margin: auto 0.5em;
+  font-size: 1.5em;
+  border-radius: 50%;
+  padding: 0.1em 0.25em 0.25em 0.25em;
+  cursor: pointer;
+}
+
+.footer i:hover{
+  background-color: var(--text);
+  color: var(--header);
 }

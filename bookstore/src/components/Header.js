@@ -1,6 +1,7 @@
 import React from 'react'
 import { BsPersonCircle } from "react-icons/bs";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -8,15 +9,15 @@ function Header() {
         <div className="header_content">
             <div className="header_left">
                 <div className="header_left_content">
-                    <a href='/Home'>
+                    <Link to={'/'} className="link">
                         <h1>The Bookstore</h1>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="header_right">
                 <div className="header_right_content">
-                    <a href="http://localhost:3000/"><i><HiOutlineShoppingCart/></i></a>
-                    <a href="http://localhost:3000/"><i><BsPersonCircle/></i></a>
+                    <Link to={'/'} className="link"><i><HiOutlineShoppingCart/></i></Link>
+                    <Link to={'/'} className="link"><i><BsPersonCircle/></i></Link>
                 </div>
             </div>
         </div>

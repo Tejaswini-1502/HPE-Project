@@ -3,7 +3,6 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 import BookCard from './BookCard';
 
-
 function ContentSection(props) {
   return (
         <div className="book_sections">
@@ -14,7 +13,7 @@ function ContentSection(props) {
             <div className="book_sections_content" style={{ display: "flex", flexWrap: "wrap" }}>
                 {
                     props.data.slice(0, 5).map((book) => {
-                        return <BookCard book={book}/>
+                        return<BookCard book={book} key={book.id}/>
                     })
                 }
             </div>

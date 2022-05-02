@@ -7,7 +7,7 @@ import { booksdata } from '../data'
 import ContentSection from '../components/ContentSection';
 import { Container } from 'react-bootstrap';
 
-function Home() {
+function HomePage() {
   return (
     <main>
         <Header/>
@@ -28,4 +28,4 @@ function Home() {
   )
 }
 
-export default Home;
+export default HomePage;
