@@ -1,6 +1,7 @@
 import HomePage from "./screens/HomePage"
 import ProductPage from "./screens/ProductPage";
 import SearchPage from "./screens/SearchPage";
+import CartPage from "./screens/CartPage";
 import { BrowserRouter as Router , Routes , Route } from "react-router-dom";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Route path='/' element={ <HomePage/> } exact/>
         <Route path='/book/:id' element={ <ProductPage/> } />
         <Route path='/' element={ <SearchPage/> } />
+        <Route path='/cart' element={<CartPage/>} />
       </Routes>
     </Router>
   );
