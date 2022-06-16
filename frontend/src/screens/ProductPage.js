@@ -75,16 +75,16 @@ function ProductPage() {
             </div>
           </div>
         </div> } */}
-        <div className="product_details">
-          <div className="product_details_content">
-            <div className="product_img">
+        <div className="book_details">
+          <div className="book_details_content">
+            <div className="book_img">
               <img src={product.image_url} alt="" />
             </div>
-            <div className="product_info">
-              <div className="product_title">
+            <div className="book_info">
+              <div className="book_title">
                 <h2>{product.title}</h2>
                 <p style={{fontWeight:'300'}}><span style={{fontWeight:'500'}}>By: </span>{product.author} <span style={{fontWeight:'500'}}>| Publisher: </span>{product.publisher}</p>
-                <p><span className="product_rating">
+                <p><span className="book_rating">
                   <i>{product.rating >= 1? <BsStarFill/> : product.rating >= 0.5 ? <BsStarHalf/> : <BsStar/>}</i>
                   <i>{product.rating >= 2? <BsStarFill/> : product.rating >= 1.5 ? <BsStarHalf/> : <BsStar/>}</i>
                   <i>{product.rating >= 3? <BsStarFill/> : product.rating >= 2.5 ? <BsStarHalf/> : <BsStar/>}</i>
@@ -96,7 +96,7 @@ function ProductPage() {
               </div>
             </div>
           </div>
-          <div className="product_description">
+          <div className="book_description">
             <h4>About the product</h4>
             <p>{product.description}</p>
           </div>
