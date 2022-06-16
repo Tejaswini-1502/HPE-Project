@@ -10,7 +10,7 @@ function App() {
       <Routes>
         {/* routing here */}
         <Route path='/' element={ <HomePage/> } exact/>
-        <Route path='/book/:id' element={ <ProductPage/> } />
+        <Route path='/product/:id' element={ <ProductPage/> } />
         <Route path='/' element={ <SearchPage/> } />
         <Route path='/cart' element={<CartPage/>} />
       </Routes>

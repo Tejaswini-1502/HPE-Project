@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect} from 'react'
 // import { useDispatch, useSelector } from 'react-redux';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
@@ -6,10 +6,11 @@ import Footer from '../components/Footer';
 import SearchBar from '../components/SearchBar'
 // import Loader from '../components/Loader'
 // import Message from '../components/Message'
-import { booksdata } from '../data' // data file
+
 import ContentSection from '../components/ContentSection';
 import { Container } from 'react-bootstrap';
 // import { listBooks } from '../actions/bookActions'
+import axios from 'axios'
 
 function HomePage() {
   // const dispatch = useDispatch()
@@ -19,6 +20,16 @@ function HomePage() {
   // useEffect(() => {
   //   dispatch(listBooks())
   // }, [dispatch])
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get('/api/products')
+      setProducts(data)
+    }
+
+    fetchProducts()
+  }, [])
 
   return (
     <main>
@@ -37,10 +48,10 @@ function HomePage() {
                   <ContentSection title='Award Winners' data={booksdata}/>
                 </>
               } */}
-                  <ContentSection title='Recent Releases' data={booksdata}/>
-                  <ContentSection title='Highest Rated' data={booksdata}/>
-                  <ContentSection title='Most Liked' data={booksdata}/>
-                  <ContentSection title='Award Winners' data={booksdata}/> 
+                  <ContentSection title='Recent Releases' data={products}/>
+                  <ContentSection title='Highest Rated' data={products}/>
+                  <ContentSection title='Most Liked' data={products}/>
+                  <ContentSection title='Award Winners' data={products}/> 
               </div>
             </Container>
         </div>
