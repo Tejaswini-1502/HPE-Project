@@ -325,6 +325,18 @@ code {
   margin: auto 0.25em;
 }
 
+.book_details .book_details_content .book_quantity{
+  display: flex;
+  margin: 2em 0;
+}
+
+.book_details .book_details_content .book_quantity p{
+  margin: auto 1em auto 0;
+  font-size: 18px;
+  font-weight: 550;
+  font-weight: bold;
+}
+
 .book_details .book_description h4,
 .book_details .other_details h4{
   font-weight: 600;

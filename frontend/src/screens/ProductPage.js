@@ -3,15 +3,17 @@ import React, { useState,useEffect } from "react";
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { useParams } from 'react-router-dom'
-import { Button, Container } from 'react-bootstrap'
+import { useParams, useNavigate} from 'react-router-dom'
+import { Button, Container, Form } from 'react-bootstrap'
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 // import { listproductDetails } from '../actions/productActions'
 import axios from 'axios'
 
 function ProductPage() {
   const [product, setProduct] = useState({genre:[]})
+  const [quantity, setQuantity] = useState(1)
   const { id } = useParams()
+  const navigate = useNavigate()
   useEffect(() => {
     const fetchProduct = async () => {
       const { data } = await axios.get(`/api/products/${id}`)
@@ -20,6 +22,11 @@ function ProductPage() {
 
     fetchProduct()
   }, [id])
+
+  const addToCartHandler = () => {
+    navigate(`/cart/${id}?qty=${quantity}`)
+  }
+
   // const dispatch = useDispatch()
   // const productDetails = useSelector(state => state.productDetails)
   // const { loading, error, product } = productDetails
@@ -92,7 +99,15 @@ function ProductPage() {
                   <i>{product.rating >= 5? <BsStarFill/> : product.rating >= 4.5 ? <BsStarHalf/> : <BsStar/>}</i>
                 </span> | <span style={{fontWeight:'400',color:'sienna'}}> {product.num_ratings} (Reviews)</span></p>
                 <p style={{fontSize:'28px',color:'darkcyan',marginTop:'3.5em'}}><b>$ {product.price}</b></p>
-                <Button style={{marginTop:'1em'}}>Add to Cart</Button>
+                <div className="book_quantity">
+                  <p>Quantity</p>
+                  <Form.Select value={quantity} onChange={(e) => setQuantity(e.target.value)} style={{width:'80px'}}>
+                    {[1,2,3,4,5].map(x => (
+                      <option key={x} value={x}>{x}</option>
+                    ))}
+                  </Form.Select>
+                </div>
+                <Button style={{marginTop:'1em'}} onClick={addToCartHandler}>Add to Cart</Button>
               </div>
             </div>
           </div>

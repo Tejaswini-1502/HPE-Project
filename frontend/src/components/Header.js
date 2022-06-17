@@ -16,7 +16,7 @@ function Header() {
             </div>
             <div className="header_right">
                 <div className="header_right_content">
-                    <Link to={'/'} className="link"><i><HiOutlineShoppingCart/></i></Link>
+                    <Link to={'/cart/'} className="link"><i><HiOutlineShoppingCart/></i></Link>
                     <Link to={'/'} className="link"><i><BsPersonCircle/></i></Link>
                 </div>
             </div>
