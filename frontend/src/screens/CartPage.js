@@ -83,9 +83,6 @@ const CartPage = () => {
           </ListGroup.Item>
         </Card>
       </Col>
-      <Col md={2}>
-        
-      </Col>
     </Row>
     </>
   )

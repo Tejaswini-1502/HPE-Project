@@ -1,31 +1,26 @@
 import React from 'react'
-import { MdArrowDropDown } from "react-icons/md"
-import { Link } from 'react-router-dom'
+import { Nav, NavDropdown } from 'react-bootstrap'
 
 function Navbar() {
   return (
     <div className='navbar'>
         <div className="navbar_content">
-          <ul>
-            <li className='genre'><Link to={'/'} className="link">Genres<i style={{fontSize:'21px'}}><MdArrowDropDown/></i></Link>
-              <ul className='genre_dropdown'>
-                <li><Link to={'/'} className="link">Action</Link></li>
-                <li><Link to={'/'} className="link">Adventure</Link></li>
-                <li><Link to={'/'} className="link">Classics</Link></li>
-                <li><Link to={'/'} className="link">Fantasy</Link></li>
-                <li><Link to={'/'} className="link">Fiction</Link></li>
-                <li><Link to={'/'} className="link">Literature</Link></li>
-                <li><Link to={'/'} className="link">Mystery</Link></li>
-                <li><Link to={'/'} className="link">Mythology</Link></li>
-                <li><Link to={'/'} className="link">Romance</Link></li>
-                <li><Link to={'/'} className="link">Politics</Link> </li>
-              </ul>
-            </li>
-            <li><Link to={'/'} className="link">New Arrivals</Link></li>
-            <li><Link to={'/'} className="link">Best Sellers</Link></li>
-            <li><Link to={'/'} className="link">Award Winners</Link></li>
-            <li><Link to={'/'} className="link">Contact</Link></li>
-          </ul>
+          <Nav>
+            <NavDropdown title="Genres">
+              <NavDropdown.Item href='/'>Action</NavDropdown.Item>
+              <NavDropdown.Item href='/'>Adventure</NavDropdown.Item>
+              <NavDropdown.Item href='/'>Fantasy</NavDropdown.Item>
+              <NavDropdown.Item href='/'>Fiction</NavDropdown.Item>
+              <NavDropdown.Item href='/'>Literature</NavDropdown.Item>
+              <NavDropdown.Item href='/'>Mystery</NavDropdown.Item>
+              <NavDropdown.Item href='/'>Mythology</NavDropdown.Item>
+              <NavDropdown.Item href='/'>Romance</NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href='/'>New Arrivals</Nav.Link>
+            <Nav.Link href='/'>Best Sellers</Nav.Link>
+            <Nav.Link href='/'>Award Winners</Nav.Link>
+            <Nav.Link href='/'>Contact</Nav.Link>
+          </Nav>
         </div>
     </div>
   )
