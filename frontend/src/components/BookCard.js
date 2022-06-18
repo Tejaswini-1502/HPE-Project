@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const BookCard = ({ book }) => {
   return (
-    <Link to={`/products/${book.id}`} key={book.id} className="link book_card">
+    <Link to={`/products/${book._id}`} key={book._id} className="link book_card">
       <Card style={{width: '12rem',zIndex:'0'}}>
           <div className="book_card_img">
               <Card.Img variant='top' src={book.image_url} style={{width:'100%',height:'100%',objectFit:'fill'}} />
