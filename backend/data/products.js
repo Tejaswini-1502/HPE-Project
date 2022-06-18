@@ -1,6 +1,6 @@
 const products = [
     {
-        id:1,
+
         title: "The Hunger Games",
         author: "Suzanne Collins",
         rating: 3.33,
@@ -16,7 +16,6 @@ const products = [
         price: 5.09
     },
     {
-        id:2,
         title: "Harry Potter and the Order of the Phoenix",
         author: "SuzannJ.K. Rowling, Mary GrandPré (Illustrator)",
         rating: 4.53,
@@ -32,7 +31,7 @@ const products = [
         price: 5.09
     },
     {
-        id:3,
+ 
         title: "Twilight",
         author: "Stephenie Meyer",
         rating: 2.53,
@@ -48,7 +47,7 @@ const products = [
         price: 5.09
     },
     {
-        id:4,
+
         title: "The Book Thief",
         author: "Markus Zusak (Goodreads Author)",
         rating: 4.33,
@@ -64,7 +63,7 @@ const products = [
         price: 5.09
     },
     {
-        id:5,
+
         title: "Animal Farm",
         author: "George Orwell, Russell Baker (Preface), C.M. Woodhouse (Introduction)",
         rating: 4.33,
