@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import { useParams } from 'react-router-dom'
-import { Button, Container } from 'react-bootstrap'
 import { useParams, useNavigate} from 'react-router-dom'
 import { Button, Container, Form } from 'react-bootstrap'
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
@@ -80,11 +78,11 @@ function ProductPage() {
             </div>
             <div className="details2">
               <h4>Related Categories</h4>
-              <p>{
+              {/* <p>{
                 product.genre.map((element) => {
                   return <span key={i++}>{"["+element+"] "}&nbsp;&nbsp;</span>
                 })
-              }</p>
+              }</p> */}
             </div>
           </div>
         </div> }
