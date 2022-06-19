@@ -7,6 +7,7 @@
   --header_shade1: #2c9e8f;
   --text: #dfdddd;
   --text1: #35292d;
+  --text2: #dfdddda0;
   --icon: #E27D60;
   --icon1: #E8A87C;
 }
@@ -48,6 +49,7 @@ code {
 .header{
   display: block;
   margin-bottom: 0;
+  position: relative;
 }
 
 .header .header_content{
@@ -156,6 +158,58 @@ a.nav-link:focus{
 
 .dropdown-menu{
   background-color: var(--text);
+}
+
+/* Login */
+.login_back{
+  height: 100vh;
+  position: relative;
+  background-color: var(--text2);
+}
+
+.login_back:before{
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8OHx8fGVufDB8fHx8&w=1000&q=80');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+}
+
+.login{
+  margin: 1em 0;
+  font-family: 'Roboto Slab', cursive;
+  position: relative;
+}
+
+.login_down{
+  position: relative;
+}
+
+.login h1{
+  margin: 0.5em 0;
+  color: var(--header_shade1);
+  font-weight: 700;
+  text-align: center;
+}
+
+.login .form_element{
+  margin: 2em 0;
+  color: var(--text1);
+}
+
+.login .form_submit{
+  text-align: center;
+}
+
+.login .form_submit button{
+  background-color: #2c9e8f;
 }
 
 /* Home Content */
@@ -338,6 +392,47 @@ a.nav-link:focus{
 
 .book_details .other_details .details2{
   width: 60%;
+}
+
+/* Cart */
+.cart{
+  font-family: 'Roboto Slab';
+}
+.cart_display{
+  padding: 2em;
+}
+
+.cart_display h1{
+  font-weight: 900;
+  margin-bottom: 1em;
+}
+
+.cart_display .cart_item{
+  padding: 1em;
+  text-align: center;
+  align-items: center;
+  color: var(--text1);
+}
+
+.cart_display .cart_item img{
+  width: 60px;
+}
+
+.cart_display .cart_item a{
+  text-decoration: none;
+  color: var(--text1);
+  font-weight: 600;
+}
+
+.cart_display .cart_item i{
+  color: var(--text1);
+}
+
+.cart_total p{
+  margin: 0;
+  color: var(--header_shade1);
+  font-size: 25px;
+  font-weight: bold;
 }
 
 /* Footer */
