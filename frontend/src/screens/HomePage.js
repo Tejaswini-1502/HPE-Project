@@ -23,23 +23,23 @@ function HomePage() {
     <main>
         <Header/>
         <Navbar/>
-        <div className="home">
-            <SearchBar/>
-            <Container>
-              <div className="home_content">
-                { loading ? <Loader/>  : 
-                  error ? <Message variant='danger'>{error}</Message> :
-                  <>
-                    <ContentSection title='Recent Releases' data={products}/>
-                    <ContentSection title='Highest Rated' data={products}/>
-                    <ContentSection title='Most Liked' data={products}/>
-                    <ContentSection title='Award Winners' data={products}/>
-                  </>
-                }
-              </div>
-            </Container>
-        </div>
-        <Footer/>
+        { loading ? <Loader/>  : 
+          error ? <Message variant='danger'>{error}</Message> :
+          <>
+            <div className="home">
+                <SearchBar/>
+                <Container>
+                  <div className="home_content">
+                        <ContentSection title='Recent Releases' data={products}/>
+                        <ContentSection title='Highest Rated' data={products}/>
+                        <ContentSection title='Most Liked' data={products}/>
+                        <ContentSection title='Award Winners' data={products}/>
+                  </div>
+                </Container>
+            </div>
+            <Footer/>
+          </>
+        }
     </main>
   )
 }
