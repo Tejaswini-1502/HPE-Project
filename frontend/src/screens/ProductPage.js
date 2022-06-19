@@ -78,11 +78,11 @@ function ProductPage() {
             </div>
             <div className="details2">
               <h4>Related Categories</h4>
-              {/* <p>{
+              <p>{
                 product.genre.map((element) => {
                   return <span key={i++}>{"["+element+"] "}&nbsp;&nbsp;</span>
                 })
-              }</p> */}
+              }</p>
             </div>
           </div>
         </div> }

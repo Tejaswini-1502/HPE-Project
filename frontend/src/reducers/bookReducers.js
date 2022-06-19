@@ -14,7 +14,7 @@ export const bookListReducer = (state = { products: [] }, action) => {
     }
 }
 
-export const bookDetailsReducer = (state = { product: { genres: [], awards: [] } }, action) => {
+export const bookDetailsReducer = (state = { product: { genre: [], awards: [] } }, action) => {
     switch(action.type){
         case BOOK_DETAILS_REQUEST:
             return { loading: true, ...state }

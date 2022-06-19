@@ -29,7 +29,7 @@ function Header() {
             <div className="header_right">
                 <div className="header_right_content">
                     <Nav className='ml-auto'>
-                        <Nav.Link href='/cart/' className="link"><i><HiOutlineShoppingCart/></i></Nav.Link>
+                        <Nav.Link href='/cart' className="link"><i><HiOutlineShoppingCart/></i></Nav.Link>
                         {userInfo ? (
                             <NavDropdown title={<i><BsPersonCircle/></i>} className="link1">
                                 <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
