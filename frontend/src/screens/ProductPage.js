@@ -80,7 +80,7 @@ function ProductPage() {
                 <div className="details2">
                   <h4>Related Categories</h4>
                   <p>{
-                    product.genre.map((element) => {
+                    product.genres.map((element) => {
                       return <span key={i++}>{"["+element+"] "}&nbsp;&nbsp;</span>
                     })
                   }</p>
