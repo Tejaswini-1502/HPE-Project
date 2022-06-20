@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
+import Header from '../components/Header'
 
 const PlaceOrderPage = () => {
     const cart = useSelector(state => state.cart)
@@ -19,29 +20,30 @@ const PlaceOrderPage = () => {
 
     return (
         <>
+            <Header/>
             <CheckoutSteps step1 step2 step3 step4/>
-            <Row>
+            <Row className='cart'>
                 <Col md={8}>
-                    <ListGroup variant='flush'>
-                        <ListGroup.Item>
+                    <ListGroup variant="secondary">
+                        <ListGroup.Item variant="secondary" className='cart_display'>
                             <h2>Shipping</h2>
                             <p>
                                 <strong>Address: </strong>
                                 {cart.shippingAddress.address}, {cart.shippingAddress.city}, {cart.shippingAddress.postalCode}, {cart.shippingAddress.country}
                             </p>
                         </ListGroup.Item>
-                        <ListGroup.Item>
+                        <ListGroup.Item variant="secondary" className='cart_display'>
                             <h2>Payment Method</h2>
                             <strong>Method: </strong>
                             {cart.paymentMethod}
                         </ListGroup.Item>
-                        <ListGroup.Item>
+                        <ListGroup.Item variant="secondary" className='cart_display'>
                             <h2>Ordered Items</h2>
                             {cart.cartItems.length === 0 ? <Message> Your cart is empty</Message> : (
-                                <ListGroup variant='flush'>
+                                <ListGroup variant="secondary">
                                     {cart.cartItems.map((item, index) => (
-                                        <ListGroup.Item key={index}>
-                                            <Row>
+                                        <ListGroup.Item key={index} variant="secondary">
+                                            <Row className='cart_item'>
                                                 <Col md={1}>
                                                     <Image src={item.image} alt={item.name} fluid rounded/>
                                                 </Col>
@@ -60,36 +62,36 @@ const PlaceOrderPage = () => {
                     </ListGroup>
                 </Col>
                 <Col md={4}>
-                    <Card>
-                        <ListGroup variant='flush'>
-                            <ListGroup.Item>
-                                <h2>Order Summary</h2>
+                    <Card className='cart_total'>
+                        <ListGroup variant="secondary">
+                            <ListGroup.Item variant="secondary">
+                                <h2 style={{fontWeight: '600'}}>Order Summary</h2>
                             </ListGroup.Item>
-                            <ListGroup.Item>
+                            <ListGroup.Item variant="secondary">
                                 <Row>
                                     <Col>Items</Col>
                                     <Col>$ {cart.itemsPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
-                            <ListGroup.Item>
+                            <ListGroup.Item variant="secondary">
                                 <Row>
                                     <Col>Shipping</Col>
                                     <Col>$ {cart.shippingPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
-                            <ListGroup.Item>
+                            <ListGroup.Item variant="secondary">
                                 <Row>
                                     <Col>Tax</Col>
                                     <Col>$ {cart.taxPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
-                            <ListGroup.Item>
+                            <ListGroup.Item variant="secondary">
                                 <Row>
-                                    <Col>Total</Col>
-                                    <Col>$ {cart.totalPrice}</Col>
+                                    <Col><strong>Total</strong></Col>
+                                    <Col><strong style={{color:'#2c9e8f'}}>$ {cart.totalPrice}</strong></Col>
                                 </Row>
                             </ListGroup.Item>
-                            <ListGroup.Item>
+                            <ListGroup.Item variant="secondary">
                                 <Button type='button' className='btn-block' disabled={cart.cartItems === 0 } onClick={placeOrderHandler}>Place Order</Button>
                             </ListGroup.Item>
                         </ListGroup>
