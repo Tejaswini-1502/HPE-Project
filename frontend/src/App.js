@@ -4,7 +4,9 @@ import SearchPage from "./screens/SearchPage";
 import CartPage from "./screens/CartPage";
 import LoginPage from "./screens/LoginPage";
 import RegisterPage from "./screens/RegisterPage";
-import ProfilePage from "./screens/ProfilePage";
+import ShippingPage from "./screens/ShippingPage";
+import PaymentPage from "./screens/PaymentPage";
+import PlaceOrderPage from "./screens/PlaceOrderPage";
 import { BrowserRouter as Router , Routes , Route } from "react-router-dom";
 
 function App() {
@@ -19,7 +21,9 @@ function App() {
         <Route path='/cart' element={ <CartPage/> } />
         <Route path='/login' element={ <LoginPage/> } />
         <Route path='/register' element={ <RegisterPage/> } />
-        <Route path='/profile' element={ <ProfilePage/> } />
+        <Route path='/shipping' element={ <ShippingPage/> } />
+        <Route path='/payment' element={ <PaymentPage/> } />
+        <Route path='/placeorder' element={ <PlaceOrderPage/> } />
       </Routes>
     </Router>
   );

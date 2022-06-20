@@ -435,6 +435,14 @@ a.nav-link:focus{
   font-weight: bold;
 }
 
+.checkout_steps{
+  font-family: 'Roboto Slab', cursive;
+}
+
+.checkout_steps .step a.nav-link{
+  color: var(--text1);
+}
+
 /* Footer */
 .footer{
   width: 100%;
