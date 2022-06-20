@@ -5,6 +5,7 @@
   --body: #a9f4d5c2;
   --header: #41B3A3;
   --header_shade1: #2c9e8f;
+  --header_shade2: #a9f4d5;
   --text: #dfdddd;
   --text1: #35292d;
   --text2: #dfdddda0;
@@ -306,13 +307,25 @@ a.nav-link:focus{
   justify-content: space-between;
 }
 
-.book_card:hover{
+.search_page .book_card .card{
+  margin: 2em 0;
+}
+
+.book_card:hover,
+.search_page .book_card .card:hover{
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transition: 0.2s;
 }
 
 .book_card .book_card_img{
   height: 14rem;
+}
+
+.search_page{
+  margin: 2em;
+  padding: 1em;
+  display: flexbox;
+  background-color: var(--header_shade2);
 }
 
 /* Book Page */

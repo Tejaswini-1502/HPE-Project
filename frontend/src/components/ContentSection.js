@@ -7,7 +7,12 @@ import BookCard from './BookCard';
 function ContentSection({title, data}) {
     const navigate = useNavigate()
     const onClickHandler = () => {
-        navigate(`/search/${title}`)
+        if(title === "Highest Rated")
+            navigate(`/search/highestrated`)
+        if(title === "Most Liked")
+            navigate(`/search/mostliked`)
+        if(title === "Award Winners")
+            navigate(`/search/awardwinners`)
     }
   return (
         <div className="book_sections">
