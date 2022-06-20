@@ -44,6 +44,9 @@ const productSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    awards: [{
+        type: String,
+    }],
     num_ratings: {
         type: Number,
         required: true,

@@ -16,7 +16,7 @@ function App() {
         {/* routing here */}
         <Route path='/' element={ <HomePage/> } exact/>
         <Route path='/products/:id' element={ <ProductPage/> } />
-        <Route path='/' element={ <SearchPage/> } />
+        <Route path='/search/*' element={ <SearchPage/> } />
         <Route path='/cart/:id' element={ <CartPage/> } />
         <Route path='/cart' element={ <CartPage/> } />
         <Route path='/login' element={ <LoginPage/> } />

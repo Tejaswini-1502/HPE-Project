@@ -14,7 +14,11 @@ function HomePage() {
   const dispatch = useDispatch()
   const bookList = useSelector(state => state.bookList)
   const { loading, error, products} = bookList
-  
+
+  let highestRatedProducts = products.filter(product => product.rating >= 4)
+  let mostLikedProducts = products.filter(product => product.liked_percent >= 90)
+  let awardWinnerProducts = products.filter(product => product.awards.length > 0)
+
   useEffect(() => {
     dispatch(listBooks())
   }, [dispatch])
@@ -30,10 +34,9 @@ function HomePage() {
                 <SearchBar/>
                 <Container>
                   <div className="home_content">
-                        <ContentSection title='Recent Releases' data={products}/>
-                        <ContentSection title='Highest Rated' data={products}/>
-                        <ContentSection title='Most Liked' data={products}/>
-                        <ContentSection title='Award Winners' data={products}/>
+                        <ContentSection title='Highest Rated' data={highestRatedProducts}/>
+                        <ContentSection title='Most Liked' data={mostLikedProducts}/>
+                        <ContentSection title='Award Winners' data={awardWinnerProducts}/>
                   </div>
                 </Container>
             </div>

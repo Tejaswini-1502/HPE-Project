@@ -1,14 +1,19 @@
 
 import React from 'react'
 import { Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom';
 import BookCard from './BookCard';
 
 function ContentSection({title, data}) {
+    const navigate = useNavigate()
+    const onClickHandler = () => {
+        navigate(`/search/${title}`)
+    }
   return (
         <div className="book_sections">
             <div className="book_sections_title">
                 <h2>{title}</h2>
-                <Button variant="dark">View All</Button>
+                <Button variant="dark" onClick={onClickHandler}>View All</Button>
             </div>
             <div className="book_sections_content" style={{ display: "flex", flexWrap: "wrap" }}>
                 {

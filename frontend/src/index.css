@@ -227,6 +227,7 @@ a.nav-link:focus{
   text-align: center;
   align-items: center;
   line-height: 5px;
+  margin-top: 1em;
 }
 
 .search input{
