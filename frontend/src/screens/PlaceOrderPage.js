@@ -38,6 +38,7 @@ const PlaceOrderPage = () => {
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice,
         }))
+        navigate('/')
     }
 
     return (
