@@ -1,13 +1,18 @@
 import asyncHandler from 'express-async-handler'
 import Order from "../models/orderModel.js";
 
+import fs from 'fs/promises'
+
 
 // @desc: create new order
 // @route: POST /api/orders
 // @access: Private
 
+
 const addOrderItems = asyncHandler(async (req,res) => {
-    const { orderItems,
+    const {
+        user,
+        orderItems,
         shippingAddress,
         paymentMethod, 
         itemsPrice, 
@@ -20,6 +25,7 @@ const addOrderItems = asyncHandler(async (req,res) => {
         throw new Error('No order item')
     }else{
         const order = new Order({
+            user,
             orderItems,
             shippingAddress,
             paymentMethod, 
@@ -29,8 +35,27 @@ const addOrderItems = asyncHandler(async (req,res) => {
             totalPrice
         })
 
-        const createdOrder = await order.save()
+        const orderLog = {
+            "user": user,
+            "orderItems": orderItems,
+            "city": shippingAddress.city,
+            "country": shippingAddress.country,
+            "amount": Number(totalPrice),
+            "paymentMethod": paymentMethod,
+            "itemsCount": orderItems.length
+        }
+
+        const jsonString = JSON.stringify(orderLog);
+
+        const createdOrder = order.save()
+        fs.appendFile('orders.log', jsonString+"\r\n", function(error) {
+            if (error) {
+                throw error;
+            }
+            process.exit();
+        });
         res.status(201).json(createdOrder)
+        
     }
 })
 

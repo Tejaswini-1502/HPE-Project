@@ -1,0 +1,114 @@
+PUT _index_template/books_data
+{
+  "index_patterns": [
+    "my-first-index*"
+  ],
+  "template": {
+    "aliases": {
+      "my_logs": {}
+    },
+    "settings": {
+      "number_of_shards": 2,
+      "number_of_replicas": 1
+    },
+    "mappings": {
+      "properties": {
+        "_id":{
+            "type": "string"
+        },
+        "title":{
+            "type": "string"
+        },
+        "isbn":{
+            "type": "string"
+        },
+        "genres": [{
+          "type": "string",
+        }],
+        "price": {
+          "type": "double"
+        }
+      }
+    }
+  }
+}
+
+curl -XPUT --insecure "https://opensearch-node1:9200/_index_template/books_data" -H 'Content-Type: application/json' -d'
+{
+  "index_patterns": [
+    "my-first-index*"
+  ],
+  "template": {
+    "aliases": {
+      "my_logs": {}
+    },
+    "settings": {
+      "number_of_shards": 2,
+      "number_of_replicas": 1
+    },
+    "mappings": {
+      "properties": {
+        "title":{
+            "type": "text"
+        },
+        "isbn":{
+            "type": "text"
+        },
+        "price": {
+          "type": "double"
+        }
+      }
+    }
+  }
+}'
+
+curl -H "Content-Type: application/x-ndjson" -POST https://localhost:5601/data/_bulk -u 'admin:admin' --insecure --data-binary "@bookstore.json"
+http://localhost:5601/app/dev_tools#/console
+
+logstash-plugin install --preserve --allow-root logstash-input-opensearch
+
+==> Change max_map_count
+wsl -d docker-desktop | echo 262144 >> /proc/sys/vm/max_map_count | cat /proc/sys/vm/max_map_count
+
+https://stackoverflow.com/questions/42111566/elasticsearch-in-windows-docker-image-vm-max-map-count
+https://stackoverflow.com/questions/68608962/unable-to-run-logstash-with-file-configuration-on-docker
+
+docker run -it --rm --name logstash --net opensearch-net opensearchproject/logstash-oss-with-opensearch-output-plugin:7.16.2 -f logstash.conf
+
+docker run -it --rm --name logstash --net opensearch-net opensearchproject/logstash-oss-with-opensearch-output-plugin:7.16.2 -e 'input { stdin { } } output {
+  opensearch {
+    hosts => ["https://opensearch:9200"]
+    index => "opensearch-logstash-docker-%{+YYYY.MM.dd}"
+    user => "admin"
+    password => "admin"
+    ssl => true
+    ssl_certificate_verification => false
+  }
+}'
+
+ca_file => "C:\Users\vaish\Downloads\cacert.pem"
+
+docker run -it --rm --name logstash --net opensearch-net opensearchproject/logstash-oss-with-opensearch-output-plugin:7.16.2 -v C:\Personal\BMSCE\HPE_CTY\Opendearch: C:\Personal\BMSCE\HPE_CTY\Opendearch:\config logstash -f /config/logstash.conf
+docker run -it --rm --name logstash --net opensearch-net opensearchproject/logstash-oss-with-opensearch-output-plugin:7.16.2 -v %cd%:/config logstash -f /config/logstash.conf
+
+docker run -h logstash --name logstash --link opensearchproject/opensearch:1.2.0 -it --rm -v %cd%:/config logstash -f /config/logstash.conf
+docker run -h logstash --name logstash --link opensearchproject/opensearch:1.2.0 -it --rm -v C:\Personal\BMSCE\HPE_CTY\Opendearch:/config logstash:8.2.3 -f /config/logstash.conf
+
+docker run -p 9200:9200 -p 9600:9600 -e "discovery.type=single-node" opensearchproject/opensearch:latest
+docker run -d  -p 5601:5601 --name opensearch-dashboards --link opensearch-node opensearchproject/opensearch-dashboards:1.2.0
+
+docker run -p 9200:9200 -p 9600:9600 --name opensearch-node -e "discovery.type=single-node" opensearchproject/opensearch:1.2.0
+docker run --net opensearch-net -h logstash --name logstash --link opensearch-node1 -it --rm logstash:8.2.3 -e 'input{stdin{ }} output{ opensearch { hosts => ["https://opensearch:9200"] index => "opensearch-logstash-docker-%{+YYYY.MM.dd}" user => "admin" password => "admin" ssl =>  true ssl_certificate_verification => false } }'
+
+docker run --net opensearch-net -h logstash --name logstash --link opensearch-node1 -it --rm logstash:8.2.3 --path.config="C:/Personal/BMSCE/HPE_CTY/Opendearch" -f logstash.conf
+
+https://stackoverflow.com/questions/33937936/how-to-parse-json-in-logstash-grok-from-a-text-file-line
+
+
+// {"user":"tejaswiniv@imail.com","orderItems":[{"title":"Harry Potter and the Order of the Phoenix","qty":1,"image":"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg","price":7.38,"product":"62c066d7ee109e7a804ea6bf","_id":"62c0825d11f73574088d4f1e"},{"title":"Wuthering Heights","qty":2,"image":"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587655304l/6185._SY475_.jpg","price":2.73,"product":"62c066d7ee109e7a804ea6c6","_id":"62c0825d11f73574088d4f1f"}],"shippingAddress":{"address":"RAGHUVANAHALLI, KANAKAPURA MAIN ROAD","city":"BANGALORE","postalCode":"560062","country":"India"},"paymentMethod":"PayPal","taxPrice":1.93,"shippingPrice":20,"totalPrice":34.77,"isPaid":false,"isDelivered":false,"_id":"62c0825d11f73574088d4f1d"}
+// {"user":"tejaswiniv@imail.com","orderItems":[{"title":"Harry Potter and the Order of the Phoenix","qty":1,"image":"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg","price":7.38,"product":"62c066d7ee109e7a804ea6bf","_id":"62c0831fe12175b8a560843a"},{"title":"Wuthering Heights","qty":2,"image":"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587655304l/6185._SY475_.jpg","price":2.73,"product":"62c066d7ee109e7a804ea6c6","_id":"62c0831fe12175b8a560843b"},{"title":"Gone with the Wind","qty":2,"image":"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1551144577l/18405._SY475_.jpg","price":5.58,"product":"62c066d7ee109e7a804ea6c4","_id":"62c0831fe12175b8a560843c"}],"shippingAddress":{"address":"RAGHUVANAHALLI, KANAKAPURA MAIN ROAD","city":"BANGALORE","postalCode":"560062","country":"India"},"paymentMethod":"Debit Card","taxPrice":3.6,"shippingPrice":20,"totalPrice":47.6,"isPaid":false,"isDelivered":false,"_id":"62c0831fe12175b8a5608439"}
+// {"user":"tejaswiniv@imail.com","orderItems":[{"title":"Romeo and Juliet","qty":1,"image":"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1572098085l/18135._SY475_.jpg","price":6.79,"product":"62c066d7ee109e7a804ea6cc","_id":"62c088d2e12175b8a5608444"}],"shippingAddress":{"address":"abc road","city":"Mysore","postalCode":"123456","country":"India"},"paymentMethod":"Debit Card","taxPrice":1.02,"shippingPrice":20,"totalPrice":27.81,"isPaid":false,"isDelivered":false,"_id":"62c088d2e12175b8a5608443"}
+// {"user":"tejaswiniv@imail.com","orderItems":[{"title":"Life of Pi","qty":1,"image":"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320562005l/4214.jpg","price":2.86,"product":"62c066d7ee109e7a804ea6e2","_id":"62c08d55fb335692d8649a69"}],"shippingAddress":{"address":"abc road","city":"mumbai","postalCode":"123456","country":"India"},"paymentMethod":"PayPal","taxPrice":0.43,"shippingPrice":20,"totalPrice":23.29,"isPaid":false,"isDelivered":false,"_id":"62c08d55fb335692d8649a68"}
+// {"user":"tejaswiniv@imail.com","orderItems":[{"title":"Life of Pi","qty":1,"image":"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320562005l/4214.jpg","price":2.86,"product":"62c066d7ee109e7a804ea6e2","_id":"62c08d55fb335692d8649a69"}],"shippingAddress":{"address":"abc road","city":"mumbai","postalCode":"123456","country":"India"},"paymentMethod":"PayPal","taxPrice":0.43,"shippingPrice":20,"totalPrice":23.29,"isPaid":false,"isDelivered":false,"_id":"62c08d55fb335692d8649a68"}
+// {"user":"tejaswiniv@imail.com","orderItems":[{"product":"62c066d7ee109e7a804ea6d9","title":"The Secret Garden","image":"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327873635l/2998.jpg","price":3.33,"qty":2}],"city":"Bangalore","country":"India","amount":"27.66","paymentMethod":"Cash On Delivery","itemsCount":1}
+

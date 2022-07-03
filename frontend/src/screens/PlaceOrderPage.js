@@ -12,6 +12,7 @@ const PlaceOrderPage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const cart = useSelector(state => state.cart)
+    const user = useSelector(state => state.userLogin)
 
     cart.itemsPrice = Math.round((cart.cartItems.reduce((acc,item) => acc + item.price*item.qty, 0))*100)/100
     cart.shippingPrice = cart.itemsPrice > 100 ? 0 : 20
@@ -20,6 +21,8 @@ const PlaceOrderPage = () => {
     
     const orderCreate = useSelector(state => state.orderCreate)
     const { order, success, error } = orderCreate
+
+    console.log(user.userInfo.email)
 
     useEffect(() => {
         if(success){
@@ -30,6 +33,7 @@ const PlaceOrderPage = () => {
 
     const placeOrderHandler = () => {
         dispatch(createOrder({
+            user: user.userInfo.email,
             orderItems: cart.cartItems,
             shippingAddress: cart.shippingAddress,
             paymentMethod: cart.paymentMethod,

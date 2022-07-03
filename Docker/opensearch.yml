@@ -1,0 +1,1401 @@
+{
+  "persistent" : {
+    "plugins" : {
+      "index_state_management" : {
+        "template_migration" : {
+          "control" : "-1"
+        }
+      }
+    }
+  },
+  "transient" : { },
+  "defaults" : {
+    "cluster" : {
+      "max_voting_config_exclusions" : "10",
+      "metadata" : {
+        "perf_analyzer" : {
+          "config" : {
+            "overrides" : ""
+          },
+          "pa_node_stats_setting" : "1",
+          "state" : "0"
+        }
+      },
+      "auto_shrink_voting_configuration" : "true",
+      "election" : {
+        "duration" : "500ms",
+        "initial_timeout" : "100ms",
+        "max_timeout" : "10s",
+        "back_off_time" : "100ms",
+        "strategy" : "default"
+      },
+      "no_master_block" : "write",
+      "persistent_tasks" : {
+        "allocation" : {
+          "enable" : "all",
+          "recheck_interval" : "30s"
+        }
+      },
+      "blocks" : {
+        "read_only_allow_delete" : "false",
+        "read_only" : "false"
+      },
+      "initial_cluster_manager_nodes" : [
+        "opensearch-node1",
+        "opensearch-node2"
+      ],
+      "remote" : {
+        "node" : {
+          "attr" : ""
+        },
+        "initial_connect_timeout" : "30s",
+        "connect" : "true",
+        "connections_per_cluster" : "3"
+      },
+      "no_cluster_manager_block" : "write",
+      "follower_lag" : {
+        "timeout" : "90000ms"
+      },
+      "routing" : {
+        "use_adaptive_replica_selection" : "true",
+        "rebalance" : {
+          "enable" : "all"
+        },
+        "allocation" : {
+          "node_concurrent_incoming_recoveries" : "2",
+          "move" : {
+            "primary_first" : "false"
+          },
+          "node_initial_primaries_recoveries" : "4",
+          "same_shard" : {
+            "host" : "false"
+          },
+          "total_shards_per_node" : "-1",
+          "cluster_concurrent_recoveries" : "-1",
+          "shard_state" : {
+            "reroute" : {
+              "priority" : "NORMAL"
+            }
+          },
+          "type" : "balanced",
+          "disk" : {
+            "threshold_enabled" : "true",
+            "watermark" : {
+              "flood_stage" : "95%",
+              "high" : "90%",
+              "low" : "85%",
+              "enable_for_single_data_node" : "false"
+            },
+            "include_relocations" : "true",
+            "reroute_interval" : "60s"
+          },
+          "node_initial_replicas_recoveries" : "4",
+          "awareness" : {
+            "attributes" : [ ]
+          },
+          "balance" : {
+            "index" : "0.55",
+            "threshold" : "1.0",
+            "shard" : "0.45"
+          },
+          "load_awareness" : {
+            "allow_unassigned_primaries" : "true",
+            "provisioned_capacity" : "-1",
+            "skew_factor" : "50.0"
+          },
+          "enable" : "all",
+          "node_concurrent_outgoing_recoveries" : "2",
+          "allow_rebalance" : "indices_all_active",
+          "cluster_concurrent_rebalance" : "2",
+          "node_concurrent_recoveries" : "2"
+        }
+      },
+      "indices" : {
+        "tombstones" : {
+          "size" : "500"
+        },
+        "close" : {
+          "enable" : "true"
+        }
+      },
+      "search" : {
+        "ignore_awareness_attributes" : "true"
+      },
+      "nodes" : {
+        "reconnect_interval" : "10s"
+      },
+      "service" : {
+        "slow_master_task_logging_threshold" : "10s",
+        "slow_cluster_manager_task_logging_threshold" : "10s",
+        "slow_task_logging_threshold" : "30s"
+      },
+      "publish" : {
+        "timeout" : "30000ms",
+        "info_timeout" : "10000ms"
+      },
+      "name" : "opensearch-cluster",
+      "fault_detection" : {
+        "leader_check" : {
+          "interval" : "1000ms",
+          "timeout" : "10000ms",
+          "retry_count" : "3"
+        },
+        "follower_check" : {
+          "interval" : "1000ms",
+          "timeout" : "10000ms",
+          "retry_count" : "3"
+        }
+      },
+      "join" : {
+        "timeout" : "60000ms"
+      },
+      "max_shards_per_node" : "1000",
+      "initial_master_nodes" : [
+        "opensearch-node1",
+        "opensearch-node2"
+      ],
+      "snapshot" : {
+        "info" : {
+          "max_concurrent_fetches" : "5"
+        }
+      },
+      "info" : {
+        "update" : {
+          "interval" : "30s",
+          "timeout" : "15s"
+        }
+      }
+    },
+    "opendistro" : {
+      "query" : {
+        "size_limit" : "200"
+      },
+      "scheduled_jobs" : {
+        "request_timeout" : "10s",
+        "sweeper" : {
+          "backoff_millis" : "50ms",
+          "period" : "5m",
+          "page_size" : "100"
+        },
+        "enabled" : "true",
+        "retry_count" : "3"
+      },
+      "asynchronous_search" : {
+        "max_wait_for_completion_timeout" : "1m",
+        "expired" : {
+          "persisted_response" : {
+            "cleanup_interval" : "30m"
+          }
+        },
+        "max_search_running_time" : "12h",
+        "persist_search_failures" : "false",
+        "active" : {
+          "context" : {
+            "reaper_interval" : "5m"
+          }
+        },
+        "node_concurrent_running_searches" : "20",
+        "max_keep_alive" : "5d"
+      },
+      "destination" : {
+        "host" : {
+          "deny_list" : [ ]
+        }
+      },
+      "index_state_management" : {
+        "coordinator" : {
+          "backoff_millis" : "50ms",
+          "sweep_period" : "10m",
+          "backoff_count" : "2"
+        },
+        "metadata_service" : {
+          "enabled" : "true"
+        },
+        "allow_list" : [
+          "allocation",
+          "close",
+          "delete",
+          "force_merge",
+          "index_priority",
+          "notification",
+          "open",
+          "read_only",
+          "read_write",
+          "replica_count",
+          "rollup",
+          "rollover",
+          "shrink",
+          "snapshot"
+        ],
+        "template_migration" : {
+          "control" : "0"
+        },
+        "history" : {
+          "max_age" : "24h",
+          "number_of_shards" : "1",
+          "rollover_retention_period" : "30d",
+          "rollover_check_period" : "8h",
+          "max_docs" : "2500000",
+          "number_of_replicas" : "1",
+          "enabled" : "true"
+        },
+        "job_interval" : "5",
+        "metadata_migration" : {
+          "status" : "0"
+        },
+        "enabled" : "true",
+        "snapshot" : {
+          "deny_list" : [ ]
+        }
+      },
+      "anomaly_detection" : {
+        "ad_result_history_rollover_period" : "12h",
+        "max_anomaly_features" : "5",
+        "breaker" : {
+          "enabled" : "true"
+        },
+        "request_timeout" : "10s",
+        "backoff_initial_delay" : "1000ms",
+        "batch_task_piece_size" : "1000",
+        "max_cache_miss_handling_per_second" : "100",
+        "enabled" : "true",
+        "max_batch_task_per_node" : "10",
+        "cooldown_minutes" : "5m",
+        "model_max_size_percent" : "0.1",
+        "max_primary_shards" : "10",
+        "ad_result_history_max_docs" : "250000000",
+        "ad_result_history_retention_period" : "30d",
+        "backoff_minutes" : "15m",
+        "detection_window_delay" : "0m",
+        "index_pressure_soft_limit" : "0.8",
+        "max_entities_for_preview" : "30",
+        "max_multi_entity_anomaly_detectors" : "10",
+        "max_entities_per_query" : "1000",
+        "max_retry_for_unresponsive_node" : "5",
+        "detection_interval" : "10m",
+        "batch_task_piece_interval_seconds" : "5",
+        "max_old_ad_task_docs_per_detector" : "1",
+        "max_retry_for_backoff" : "3",
+        "max_anomaly_detectors" : "1000",
+        "filter_by_backend_roles" : "false"
+      },
+      "ppl" : {
+        "enabled" : "true",
+        "query" : {
+          "memory_limit" : "85%"
+        }
+      },
+      "alerting" : {
+        "alert_backoff_millis" : "50ms",
+        "index_timeout" : "60s",
+        "move_alerts_backoff_count" : "3",
+        "alert_history_max_age" : "30d",
+        "request_timeout" : "10s",
+        "bulk_timeout" : "120s",
+        "destination" : {
+          "allow_list" : [
+            "chime",
+            "slack",
+            "custom_webhook",
+            "email",
+            "test_action"
+          ]
+        },
+        "monitor" : {
+          "max_monitors" : "1000"
+        },
+        "action_throttle_max_value" : "24h",
+        "alert_history_rollover_period" : "12h",
+        "alert_history_max_docs" : "1000",
+        "alert_backoff_count" : "2",
+        "move_alerts_backoff_millis" : "250ms",
+        "alert_history_retention_period" : "60d",
+        "alert_history_enabled" : "true",
+        "input_timeout" : "30s",
+        "filter_by_backend_roles" : "false"
+      },
+      "jobscheduler" : {
+        "jitter_limit" : "0.6",
+        "request_timeout" : "10s",
+        "sweeper" : {
+          "backoff_millis" : "50ms",
+          "period" : "5m",
+          "page_size" : "100"
+        },
+        "threadpool" : {
+          "queue_size" : "200",
+          "size" : "4"
+        },
+        "retry_count" : "3"
+      },
+      "rollup" : {
+        "search" : {
+          "backoff_millis" : "1000ms",
+          "backoff_count" : "5",
+          "enabled" : "true"
+        },
+        "dashboards" : {
+          "enabled" : "true"
+        },
+        "enabled" : "true",
+        "ingest" : {
+          "backoff_millis" : "1000ms",
+          "backoff_count" : "5"
+        }
+      },
+      "sql" : {
+        "cursor" : {
+          "enabled" : "true",
+          "fetch_size" : "1000",
+          "keep_alive" : "1m"
+        },
+        "metrics" : {
+          "rollinginterval" : "60",
+          "rollingwindow" : "3600"
+        },
+        "engine" : {
+          "new" : {
+            "enabled" : "true"
+          }
+        },
+        "enabled" : "true",
+        "query" : {
+          "analysis" : {
+            "semantic" : {
+              "threshold" : "200",
+              "suggestion" : "false"
+            },
+            "enabled" : "false"
+          },
+          "slowlog" : "2",
+          "response" : {
+            "format" : "jdbc"
+          }
+        }
+      }
+    },
+    "plugins" : {
+      "replication" : {
+        "leader" : {
+          "thread_pool" : {
+            "queue_size" : "1000",
+            "size" : "0"
+          }
+        },
+        "autofollow" : {
+          "concurrent_replication_jobs_trigger_size" : "3",
+          "fetch_poll_interval" : "30s",
+          "retry_poll_interval" : "1h"
+        },
+        "follower" : {
+          "poll_interval" : "50ms",
+          "index" : {
+            "ops_batch_size" : "50000",
+            "recovery" : {
+              "chunk_size" : "10mb",
+              "max_concurrent_file_chunks" : "5"
+            }
+          },
+          "block" : {
+            "start" : "false"
+          },
+          "retention_lease_max_failure_duration" : "1h",
+          "concurrent_readers_per_shard" : "2",
+          "metadata_sync_interval" : "60s"
+        }
+      },
+      "security_config" : {
+        "ssl_dual_mode_enabled" : "false"
+      },
+      "query" : {
+        "size_limit" : "200",
+        "memory_limit" : "85%",
+        "metrics" : {
+          "rolling_interval" : "60",
+          "rolling_window" : "3600"
+        }
+      },
+      "scheduled_jobs" : {
+        "request_timeout" : "10s",
+        "sweeper" : {
+          "backoff_millis" : "50ms",
+          "period" : "5m",
+          "page_size" : "100"
+        },
+        "enabled" : "true",
+        "retry_count" : "3"
+      },
+      "asynchronous_search" : {
+        "max_wait_for_completion_timeout" : "1m",
+        "expired" : {
+          "persisted_response" : {
+            "cleanup_interval" : "30m"
+          }
+        },
+        "max_search_running_time" : "12h",
+        "persist_search_failures" : "false",
+        "active" : {
+          "context" : {
+            "reaper_interval" : "5m"
+          }
+        },
+        "node_concurrent_running_searches" : "20",
+        "max_keep_alive" : "5d"
+      },
+      "destination" : {
+        "host" : {
+          "deny_list" : [ ]
+        }
+      },
+      "index_state_management" : {
+        "coordinator" : {
+          "backoff_millis" : "50ms",
+          "sweep_period" : "10m",
+          "backoff_count" : "2"
+        },
+        "jitter" : "0.6",
+        "metadata_service" : {
+          "enabled" : "true"
+        },
+        "restricted_index_pattern" : """\.opendistro_security|\.kibana.*|\.opendistro-ism-config""",
+        "allow_list" : [
+          "allocation",
+          "close",
+          "delete",
+          "force_merge",
+          "index_priority",
+          "notification",
+          "open",
+          "read_only",
+          "read_write",
+          "replica_count",
+          "rollup",
+          "rollover",
+          "shrink",
+          "snapshot"
+        ],
+        "history" : {
+          "max_age" : "24h",
+          "number_of_shards" : "1",
+          "rollover_retention_period" : "30d",
+          "rollover_check_period" : "8h",
+          "max_docs" : "2500000",
+          "number_of_replicas" : "1",
+          "enabled" : "true"
+        },
+        "job_interval" : "5",
+        "metadata_migration" : {
+          "status" : "0"
+        },
+        "enabled" : "true",
+        "snapshot" : {
+          "deny_list" : [ ]
+        }
+      },
+      "ppl" : {
+        "enabled" : "true"
+      },
+      "alerting" : {
+        "alert_backoff_millis" : "50ms",
+        "index_timeout" : "60s",
+        "move_alerts_backoff_count" : "3",
+        "alert_history_max_age" : "30d",
+        "request_timeout" : "10s",
+        "alert_finding_max_docs" : "1000",
+        "bulk_timeout" : "120s",
+        "destination" : {
+          "allow_list" : [
+            "chime",
+            "slack",
+            "custom_webhook",
+            "email",
+            "test_action"
+          ]
+        },
+        "alert_finding_rollover_period" : "12h",
+        "finding_history_max_age" : "30d",
+        "monitor" : {
+          "max_monitors" : "1000"
+        },
+        "max_actionable_alert_count" : "50",
+        "action_throttle_max_value" : "24h",
+        "alert_history_rollover_period" : "12h",
+        "alert_history_max_docs" : "1000",
+        "alert_finding_enabled" : "true",
+        "alert_backoff_count" : "2",
+        "finding_history_retention_period" : "60d",
+        "move_alerts_backoff_millis" : "250ms",
+        "alert_history_retention_period" : "60d",
+        "alert_history_enabled" : "true",
+        "input_timeout" : "30s",
+        "filter_by_backend_roles" : "false"
+      },
+      "rollup" : {
+        "search" : {
+          "backoff_millis" : "1000ms",
+          "search_all_jobs" : "false",
+          "backoff_count" : "5",
+          "enabled" : "true"
+        },
+        "dashboards" : {
+          "enabled" : "true"
+        },
+        "enabled" : "true",
+        "ingest" : {
+          "backoff_millis" : "1000ms",
+          "backoff_count" : "5"
+        }
+      },
+      "sql" : {
+        "cursor" : {
+          "keep_alive" : "1m"
+        },
+        "slowlog" : "2",
+        "delete" : {
+          "enabled" : "false"
+        },
+        "enabled" : "true"
+      },
+      "transform" : {
+        "circuit_breaker" : {
+          "jvm" : {
+            "threshold" : "85"
+          },
+          "enabled" : "true"
+        },
+        "internal" : {
+          "index" : {
+            "backoff_millis" : "1000ms",
+            "backoff_count" : "5"
+          },
+          "search" : {
+            "backoff_millis" : "1000ms",
+            "backoff_count" : "5"
+          }
+        }
+      },
+      "index_management" : {
+        "filter_by_backend_roles" : "false"
+      },
+      "anomaly_detection" : {
+        "entity_cold_start_queue_max_heap_percent" : "0.001",
+        "max_anomaly_features" : "5",
+        "breaker" : {
+          "enabled" : "true"
+        },
+        "request_timeout" : "10s",
+        "checkpoint_read_queue_max_heap_percent" : "0.001",
+        "max_batch_task_per_node" : "10",
+        "checkpoint_read_queue_batch_size" : "25",
+        "max_top_entities_for_historical_analysis" : "1000",
+        "cooldown_minutes" : "5m",
+        "model_max_size_percent" : "0.1",
+        "max_running_entities_per_detector_for_historical_analysis" : "10",
+        "page_size" : "1000",
+        "checkpoint_read_queue_concurrency" : "1",
+        "index_pressure_soft_limit" : "0.6",
+        "max_multi_entity_anomaly_detectors" : "10",
+        "max_entities_per_query" : "1000000",
+        "delete_anomaly_result_when_delete_detector" : "false",
+        "max_concurrent_preview" : "2",
+        "max_cached_deleted_tasks" : "1000",
+        "max_retry_for_unresponsive_node" : "5",
+        "entity_cold_start_queue_concurrency" : "1",
+        "ad_result_history_max_docs_per_shard" : "1350000000",
+        "batch_task_piece_interval_seconds" : "5",
+        "dedicated_cache_size" : "10",
+        "expected_cold_entity_execution_time_in_secs" : "3",
+        "filter_by_backend_roles" : "false",
+        "ad_result_history_rollover_period" : "12h",
+        "checkpoint_write_queue_concurrency" : "2",
+        "backoff_initial_delay" : "1000ms",
+        "batch_task_piece_size" : "1000",
+        "enabled" : "true",
+        "category_field_limit" : "2",
+        "checkpoint_write_queue_batch_size" : "25",
+        "result_write_queue_batch_size" : "5000",
+        "max_primary_shards" : "10",
+        "result_write_queue_concurrency" : "2",
+        "result_write_queue_max_heap_percent" : "0.01",
+        "cold_entity_queue_max_heap_percent" : "0.001",
+        "ad_result_history_retention_period" : "30d",
+        "backoff_minutes" : "15m",
+        "detection_window_delay" : "0m",
+        "checkpoint_write_queue_max_heap_percent" : "0.01",
+        "max_entities_for_preview" : "5",
+        "index_pressure_hard_limit" : "0.9",
+        "max_model_size_per_node" : "100",
+        "detection_interval" : "10m",
+        "max_old_ad_task_docs_per_detector" : "1",
+        "max_retry_for_backoff" : "3",
+        "max_anomaly_detectors" : "1000"
+      },
+      "jobscheduler" : {
+        "jitter_limit" : "0.6",
+        "request_timeout" : "10s",
+        "sweeper" : {
+          "backoff_millis" : "50ms",
+          "period" : "5m",
+          "page_size" : "100"
+        },
+        "retry_count" : "3"
+      }
+    },
+    "logger" : {
+      "level" : "INFO"
+    },
+    "bootstrap" : {
+      "memory_lock" : "true",
+      "system_call_filter" : "true",
+      "ctrlhandler" : "true"
+    },
+    "processors" : "4",
+    "ingest" : {
+      "user_agent" : {
+        "cache_size" : "1000"
+      },
+      "geoip" : {
+        "cache_size" : "1000"
+      },
+      "grok" : {
+        "watchdog" : {
+          "max_execution_time" : "1s",
+          "interval" : "1s"
+        }
+      }
+    },
+    "network" : {
+      "host" : [
+        "0.0.0.0"
+      ],
+      "tcp" : {
+        "reuse_address" : "true",
+        "keep_count" : "-1",
+        "connect_timeout" : "30s",
+        "keep_interval" : "-1",
+        "no_delay" : "true",
+        "keep_alive" : "true",
+        "receive_buffer_size" : "-1b",
+        "keep_idle" : "-1",
+        "send_buffer_size" : "-1b"
+      },
+      "bind_host" : [
+        "0.0.0.0"
+      ],
+      "server" : "true",
+      "breaker" : {
+        "inflight_requests" : {
+          "limit" : "100%",
+          "overhead" : "2.0"
+        }
+      },
+      "publish_host" : [
+        "0.0.0.0"
+      ]
+    },
+    "pidfile" : "",
+    "path" : {
+      "data" : [ ],
+      "logs" : "/usr/share/opensearch/logs",
+      "shared_data" : "",
+      "home" : "/usr/share/opensearch",
+      "repo" : [ ]
+    },
+    "search" : {
+      "default_search_timeout" : "-1",
+      "highlight" : {
+        "term_vector_multi_value" : "true"
+      },
+      "cancel_after_time_interval" : "-1",
+      "default_allow_partial_results" : "true",
+      "max_open_scroll_context" : "500",
+      "max_buckets" : "65535",
+      "low_level_cancellation" : "true",
+      "allow_expensive_queries" : "true",
+      "keep_alive_interval" : "1m",
+      "default_keep_alive" : "5m",
+      "max_keep_alive" : "24h"
+    },
+    "security" : {
+      "manager" : {
+        "filter_bad_defaults" : "true"
+      }
+    },
+    "repositories" : {
+      "fs" : {
+        "compress" : "false",
+        "chunk_size" : "9223372036854775807b",
+        "location" : ""
+      },
+      "url" : {
+        "supported_protocols" : [
+          "http",
+          "https",
+          "ftp",
+          "file",
+          "jar"
+        ],
+        "allowed_urls" : [ ],
+        "url" : "http:"
+      }
+    },
+    "action" : {
+      "auto_create_index" : "true",
+      "search" : {
+        "shard_count" : {
+          "limit" : "9223372036854775807"
+        }
+      },
+      "destructive_requires_name" : "false"
+    },
+    "client" : {
+      "type" : "node"
+    },
+    "opensearch_dashboards" : {
+      "system_indices" : [
+        ".opensearch_dashboards",
+        ".opensearch_dashboards_*",
+        ".reporting-*",
+        ".apm-agent-configuration",
+        ".apm-custom-link"
+      ]
+    },
+    "ml" : {
+      "task_thread_pool" : {
+        "queue_size" : "4",
+        "size" : "4"
+      }
+    },
+    "opendistro_security_config" : {
+      "ssl_dual_mode_enabled" : "false"
+    },
+    "rest" : {
+      "action" : {
+        "multi" : {
+          "allow_explicit_index" : "true"
+        }
+      }
+    },
+    "cache" : {
+      "recycler" : {
+        "page" : {
+          "limit" : {
+            "heap" : "10%"
+          },
+          "type" : "CONCURRENT",
+          "weight" : {
+            "longs" : "1.0",
+            "ints" : "1.0",
+            "bytes" : "1.0",
+            "objects" : "0.1"
+          }
+        }
+      }
+    },
+    "reindex" : {
+      "remote" : {
+        "allowlist" : [ ],
+        "whitelist" : [ ]
+      }
+    },
+    "replication_follower" : {
+      "core" : "1",
+      "max" : "10",
+      "keep_alive" : "1m"
+    },
+    "resource" : {
+      "reload" : {
+        "enabled" : "true",
+        "interval" : {
+          "low" : "60s",
+          "high" : "5s",
+          "medium" : "30s"
+        }
+      }
+    },
+    "thread_pool" : {
+      "force_merge" : {
+        "queue_size" : "-1",
+        "size" : "1"
+      },
+      "fetch_shard_started" : {
+        "core" : "1",
+        "max" : "8",
+        "keep_alive" : "5m"
+      },
+      "listener" : {
+        "queue_size" : "-1",
+        "size" : "2"
+      },
+      "refresh" : {
+        "core" : "1",
+        "max" : "2",
+        "keep_alive" : "5m"
+      },
+      "system_write" : {
+        "queue_size" : "1000",
+        "size" : "2"
+      },
+      "generic" : {
+        "core" : "4",
+        "max" : "128",
+        "keep_alive" : "30s"
+      },
+      "warmer" : {
+        "core" : "1",
+        "max" : "2",
+        "keep_alive" : "5m"
+      },
+      "search" : {
+        "max_queue_size" : "1000",
+        "queue_size" : "1000",
+        "size" : "7",
+        "auto_queue_frame_size" : "2000",
+        "target_response_time" : "1s",
+        "min_queue_size" : "1000"
+      },
+      "opensearch_asynchronous_search_generic" : {
+        "core" : "1",
+        "max" : "8",
+        "keep_alive" : "30m"
+      },
+      "fetch_shard_store" : {
+        "core" : "1",
+        "max" : "8",
+        "keep_alive" : "5m"
+      },
+      "flush" : {
+        "core" : "1",
+        "max" : "2",
+        "keep_alive" : "5m"
+      },
+      "management" : {
+        "core" : "1",
+        "max" : "5",
+        "keep_alive" : "5m"
+      },
+      "analyze" : {
+        "queue_size" : "16",
+        "size" : "1"
+      },
+      "get" : {
+        "queue_size" : "1000",
+        "size" : "4"
+      },
+      "system_read" : {
+        "queue_size" : "2000",
+        "size" : "2"
+      },
+      "estimated_time_interval" : "200ms",
+      "write" : {
+        "queue_size" : "10000",
+        "size" : "4"
+      },
+      "snapshot" : {
+        "core" : "1",
+        "max" : "2",
+        "keep_alive" : "5m"
+      },
+      "search_throttled" : {
+        "max_queue_size" : "100",
+        "queue_size" : "100",
+        "size" : "1",
+        "auto_queue_frame_size" : "200",
+        "target_response_time" : "1s",
+        "min_queue_size" : "100"
+      }
+    },
+    "index" : {
+      "codec" : "default",
+      "recovery" : {
+        "type" : ""
+      },
+      "store" : {
+        "type" : "",
+        "fs" : {
+          "fs_lock" : "native"
+        },
+        "preload" : [ ]
+      }
+    },
+    "knn" : {
+      "algo_param" : {
+        "index_thread_qty" : "1"
+      },
+      "cache" : {
+        "item" : {
+          "expiry" : {
+            "enabled" : "false",
+            "minutes" : "3h"
+          }
+        }
+      },
+      "memory" : {
+        "circuit_breaker" : {
+          "limit" : "50%",
+          "enabled" : "true"
+        }
+      },
+      "plugin" : {
+        "enabled" : "true"
+      },
+      "queue_size" : "1",
+      "size" : "1",
+      "circuit_breaker" : {
+        "unset" : {
+          "percentage" : "75.0"
+        },
+        "triggered" : "false"
+      },
+      "model" : {
+        "index" : {
+          "number_of_shards" : "1",
+          "number_of_replicas" : "1"
+        },
+        "cache" : {
+          "size" : {
+            "limit" : "10%"
+          }
+        }
+      }
+    },
+    "monitor" : {
+      "jvm" : {
+        "gc" : {
+          "enabled" : "true",
+          "overhead" : {
+            "warn" : "50",
+            "debug" : "10",
+            "info" : "25"
+          },
+          "refresh_interval" : "1s"
+        },
+        "refresh_interval" : "1s"
+      },
+      "process" : {
+        "refresh_interval" : "1s"
+      },
+      "os" : {
+        "refresh_interval" : "1s"
+      },
+      "fs" : {
+        "health" : {
+          "healthy_timeout_threshold" : "60s",
+          "refresh_interval" : "60s",
+          "enabled" : "true",
+          "slow_path_logging_threshold" : "5s"
+        },
+        "refresh_interval" : "1s"
+      }
+    },
+    "replication_leader" : {
+      "queue_size" : "1000",
+      "size" : "7"
+    },
+    "transport" : {
+      "tcp" : {
+        "reuse_address" : "true",
+        "keep_count" : "-1",
+        "connect_timeout" : "30s",
+        "keep_interval" : "-1",
+        "compress" : "false",
+        "port" : "9300-9400",
+        "no_delay" : "true",
+        "keep_alive" : "true",
+        "receive_buffer_size" : "-1b",
+        "keep_idle" : "-1",
+        "send_buffer_size" : "-1b"
+      },
+      "bind_host" : [ ],
+      "connect_timeout" : "30s",
+      "compress" : "false",
+      "ping_schedule" : "-1",
+      "connections_per_node" : {
+        "recovery" : "2",
+        "state" : "1",
+        "bulk" : "3",
+        "reg" : "6",
+        "ping" : "1"
+      },
+      "tracer" : {
+        "include" : [ ],
+        "exclude" : [
+          "internal:coordination/fault_detection/*",
+          "cluster:monitor/nodes/liveness"
+        ]
+      },
+      "type" : "org.opensearch.security.ssl.http.netty.SecuritySSLNettyTransport",
+      "slow_operation_logging_threshold" : "5s",
+      "type.default" : "netty4",
+      "port" : "9300-9400",
+      "host" : [ ],
+      "publish_port" : "-1",
+      "tcp_no_delay" : "true",
+      "publish_host" : [ ],
+      "netty" : {
+        "receive_predictor_size" : "64kb",
+        "receive_predictor_max" : "64kb",
+        "worker_count" : "4",
+        "receive_predictor_min" : "64kb",
+        "boss_count" : "1"
+      }
+    },
+    "script" : {
+      "allowed_contexts" : [ ],
+      "max_compilations_rate" : "use-context",
+      "cache" : {
+        "max_size" : "100",
+        "expire" : "0ms"
+      },
+      "painless" : {
+        "regex" : {
+          "enabled" : "limited",
+          "limit-factor" : "6"
+        }
+      },
+      "max_size_in_bytes" : "65535",
+      "allowed_types" : [ ],
+      "disable_max_compilations_rate" : "false"
+    },
+    "indexing_pressure" : {
+      "memory" : {
+        "limit" : "10%"
+      }
+    },
+    "node" : {
+      "data" : "true",
+      "roles" : [
+        "cluster_manager",
+        "remote_cluster_client",
+        "data",
+        "ingest"
+      ],
+      "max_local_storage_nodes" : "3",
+      "processors" : "4",
+      "store" : {
+        "allow_mmap" : "true"
+      },
+      "ingest" : "true",
+      "master" : "true",
+      "pidfile" : "",
+      "remote_cluster_client" : "true",
+      "enable_lucene_segment_infos_trace" : "false",
+      "local_storage" : "true",
+      "name" : "opensearch-node1",
+      "id" : {
+        "seed" : "0"
+      },
+      "attr" : {
+        "shard_indexing_pressure_enabled" : "true"
+      },
+      "portsfile" : "false"
+    },
+    "indices" : {
+      "replication" : {
+        "retry_timeout" : "60s",
+        "initial_retry_backoff_bound" : "50ms"
+      },
+      "cache" : {
+        "cleanup_interval" : "1m"
+      },
+      "mapping" : {
+        "dynamic_timeout" : "30s",
+        "max_in_flight_updates" : "10"
+      },
+      "memory" : {
+        "interval" : "5s",
+        "max_index_buffer_size" : "-1",
+        "shard_inactive_time" : "5m",
+        "index_buffer_size" : "10%",
+        "min_index_buffer_size" : "48mb"
+      },
+      "breaker" : {
+        "request" : {
+          "limit" : "60%",
+          "type" : "memory",
+          "overhead" : "1.0"
+        },
+        "total" : {
+          "limit" : "95%",
+          "use_real_memory" : "true"
+        },
+        "fielddata" : {
+          "limit" : "40%",
+          "type" : "memory",
+          "overhead" : "1.03"
+        },
+        "type" : "hierarchy"
+      },
+      "query" : {
+        "bool" : {
+          "max_clause_count" : "1024"
+        },
+        "query_string" : {
+          "analyze_wildcard" : "false",
+          "allowLeadingWildcard" : "true"
+        }
+      },
+      "id_field_data" : {
+        "enabled" : "true"
+      },
+      "recovery" : {
+        "recovery_activity_timeout" : "1800000ms",
+        "retry_delay_network" : "5s",
+        "internal_action_timeout" : "15m",
+        "retry_delay_state_sync" : "500ms",
+        "internal_action_long_timeout" : "1800000ms",
+        "max_concurrent_operations" : "1",
+        "max_bytes_per_sec" : "40mb",
+        "max_concurrent_file_chunks" : "2"
+      },
+      "requests" : {
+        "cache" : {
+          "size" : "1%",
+          "expire" : "0ms"
+        }
+      },
+      "store" : {
+        "delete" : {
+          "shard" : {
+            "timeout" : "30s"
+          }
+        }
+      },
+      "analysis" : {
+        "hunspell" : {
+          "dictionary" : {
+            "ignore_case" : "false",
+            "lazy" : "false"
+          }
+        }
+      },
+      "queries" : {
+        "cache" : {
+          "count" : "10000",
+          "size" : "10%",
+          "all_segments" : "false"
+        }
+      },
+      "fielddata" : {
+        "cache" : {
+          "size" : "-1b"
+        }
+      }
+    },
+    "null" : {
+      "queue_size" : "1000",
+      "size" : "4"
+    },
+    "plugin" : {
+      "mandatory" : [ ]
+    },
+    "opensearch" : {
+      "reports" : {
+        "general" : {
+          "operationTimeoutMs" : "60000",
+          "defaultItemsQueryCount" : "100"
+        }
+      },
+      "ad" : {
+        "ad-threadpool" : {
+          "core" : "1",
+          "max" : "2",
+          "keep_alive" : "10m"
+        },
+        "ad-batch-task-threadpool" : {
+          "core" : "1",
+          "max" : "1",
+          "keep_alive" : "10m"
+        }
+      },
+      "observability" : {
+        "general" : {
+          "operationTimeoutMs" : "60000",
+          "defaultItemsQueryCount" : "1000"
+        },
+        "access" : {
+          "filterBy" : "NoFilter",
+          "ignoreRoles" : [
+            "own_index",
+            "opensearch_dashboards_user",
+            "notebooks_full_access",
+            "notebooks_read_access"
+          ],
+          "adminAccess" : "AllObservabilityObjects"
+        },
+        "polling" : {
+          "maxLockRetries" : "4",
+          "jobLockDurationSeconds" : "300",
+          "maxPollingDurationSeconds" : "900",
+          "minPollingDurationSeconds" : "300"
+        }
+      },
+      "notifications" : {
+        "core" : {
+          "allowed_config_types" : [
+            "slack",
+            "chime",
+            "webhook",
+            "email",
+            "sns",
+            "ses_account",
+            "smtp_account",
+            "email_group"
+          ],
+          "tooltip_support" : "true",
+          "http" : {
+            "socket_timeout" : "50000",
+            "host_deny_list" : [ ],
+            "max_connections" : "60",
+            "connection_timeout" : "5000",
+            "max_connection_per_route" : "20"
+          },
+          "email" : {
+            "minimum_header_length" : "100",
+            "size_limit" : "10000"
+          }
+        },
+        "general" : {
+          "default_items_query_count" : "100",
+          "operation_timeout_ms" : "60000",
+          "filter_by_backend_roles" : "false"
+        }
+      }
+    },
+    "discovery" : {
+      "seed_hosts" : [
+        "opensearch-node1",
+        "opensearch-node2"
+      ],
+      "unconfigured_bootstrap_timeout" : "3s",
+      "request_peers_timeout" : "3000ms",
+      "zen" : {
+        "hosts_provider" : [ ],
+        "ping" : {
+          "unicast" : {
+            "concurrent_connects" : "10",
+            "hosts" : [ ],
+            "hosts.resolve_timeout" : "5s"
+          }
+        }
+      },
+      "initial_state_timeout" : "30s",
+      "cluster_formation_warning_timeout" : "10000ms",
+      "seed_providers" : [ ],
+      "type" : "zen",
+      "seed_resolver" : {
+        "max_concurrent_resolvers" : "10",
+        "timeout" : "5s"
+      },
+      "find_peers_interval" : "1000ms",
+      "probe" : {
+        "connect_timeout" : "3000ms",
+        "handshake_timeout" : "1000ms"
+      }
+    },
+    "http" : {
+      "cors" : {
+        "max-age" : "1728000",
+        "allow-origin" : "",
+        "allow-headers" : "X-Requested-With,Content-Type,Content-Length",
+        "allow-credentials" : "false",
+        "allow-methods" : "OPTIONS,HEAD,GET,POST,PUT,DELETE",
+        "enabled" : "false"
+      },
+      "max_chunk_size" : "8kb",
+      "compression_level" : "3",
+      "max_initial_line_length" : "4kb",
+      "type" : "org.opensearch.security.http.SecurityHttpServerTransport",
+      "pipelining" : {
+        "max_events" : "10000"
+      },
+      "type.default" : "netty4",
+      "content_type" : {
+        "required" : "true"
+      },
+      "host" : [ ],
+      "publish_port" : "-1",
+      "read_timeout" : "0ms",
+      "max_content_length" : "100mb",
+      "netty" : {
+        "receive_predictor_size" : "64kb",
+        "max_composite_buffer_components" : "69905",
+        "worker_count" : "0"
+      },
+      "tcp" : {
+        "reuse_address" : "true",
+        "keep_count" : "-1",
+        "keep_interval" : "-1",
+        "no_delay" : "true",
+        "keep_alive" : "true",
+        "receive_buffer_size" : "-1b",
+        "keep_idle" : "-1",
+        "send_buffer_size" : "-1b"
+      },
+      "bind_host" : [ ],
+      "reset_cookies" : "false",
+      "max_warning_header_count" : "-1",
+      "tracer" : {
+        "include" : [ ],
+        "exclude" : [ ]
+      },
+      "max_warning_header_size" : "-1b",
+      "detailed_errors" : {
+        "enabled" : "true"
+      },
+      "port" : "9200-9300",
+      "max_header_size" : "8kb",
+      "tcp_no_delay" : "true",
+      "compression" : "false",
+      "publish_host" : [ ]
+    },
+    "shard_indexing_pressure" : {
+      "primary_parameter" : {
+        "node" : {
+          "soft_limit" : "0.7"
+        },
+        "shard" : {
+          "min_limit" : "0.001"
+        }
+      },
+      "enforced" : "false",
+      "secondary_parameter" : {
+        "successful_request" : {
+          "max_outstanding_requests" : "100",
+          "elapsed_timeout" : "300000ms"
+        },
+        "throughput" : {
+          "request_size_window" : "2000",
+          "degradation_factor" : "5.0"
+        }
+      },
+      "cache_store" : {
+        "max_size" : "200"
+      },
+      "enabled" : "false",
+      "operating_factor" : {
+        "optimal" : "0.85",
+        "lower" : "0.75",
+        "upper" : "0.95"
+      }
+    },
+    "compatibility" : {
+      "override_main_response_version" : "false"
+    },
+    "gateway" : {
+      "recover_after_master_nodes" : "0",
+      "expected_nodes" : "-1",
+      "recover_after_data_nodes" : "-1",
+      "expected_data_nodes" : "-1",
+      "write_dangling_indices_info" : "true",
+      "slow_write_logging_threshold" : "10s",
+      "recover_after_time" : "0ms",
+      "expected_master_nodes" : "-1",
+      "recover_after_nodes" : "-1",
+      "auto_import_dangling_indices" : "false"
+    },
+    "snapshot" : {
+      "max_concurrent_operations" : "1000"
+    }
+  }
+}
