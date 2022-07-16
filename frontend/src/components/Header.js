@@ -32,6 +32,7 @@ function Header() {
                         <Nav.Link href='/cart' className="link"><i><HiOutlineShoppingCart/></i></Nav.Link>
                         {userInfo ? (
                             <NavDropdown title={<i><BsPersonCircle/></i>} className="link1">
+                                <NavDropdown.Item>Hello, {userInfo.name}</NavDropdown.Item>
                                 <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                             </NavDropdown>
                         ) : <Nav.Link href='/login' className="link"><i><MdLogin/></i></Nav.Link>}

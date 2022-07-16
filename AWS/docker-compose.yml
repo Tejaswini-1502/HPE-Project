@@ -4,21 +4,18 @@ services:
     image: opensearchproject/logstash-oss-with-opensearch-output-plugin:7.16.2
     container_name: logstash-aws
     ports:
-      - 5044:5044
+      - 5042:5042
     volumes:
       - type: bind
         source: ./logstash.conf #path to logstash.conf on local system
         target: /usr/share/logstash/pipeline/logstash.conf
       - type: bind
-        source: C:/Personal/BMSCE/HPE_CTY/Opendearch/Bookstore.csv #path to logstash.conf on local system
-        target: /usr/share/logstash/data/sample.csv
+        source: C:/Personal/BMSCE/HPE_CTY/Bookstore.csv #path to logstash.conf on local system
+        target: /usr/share/logstash/data/books.csv
+      - type: bind
+        source: C:/Personal/BMSCE/HPE_CTY/orders.log
+        target: /usr/share/logstash/data/order.log
       - logstash:/usr/share/logstash/data
-    # networks:
-    #   - opensearch-net
 
 volumes:
-  # opensearch-data1:
   logstash:
-
-# networks:
-#   opensearch-net:

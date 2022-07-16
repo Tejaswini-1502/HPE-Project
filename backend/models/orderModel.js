@@ -6,6 +6,10 @@ const orderSchema = mongoose.Schema({
         required: true,
         ref: 'User'
     },
+    date: {
+        type: Date,
+        required: true
+    },
     orderItems: [
         {
             title: { type: String, required: true },

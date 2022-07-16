@@ -24,8 +24,10 @@ const addOrderItems = asyncHandler(async (req,res) => {
         res.status(400)
         throw new Error('No order item')
     }else{
+        var date = new Date();
         const order = new Order({
             user,
+            date,
             orderItems,
             shippingAddress,
             paymentMethod, 
@@ -37,6 +39,7 @@ const addOrderItems = asyncHandler(async (req,res) => {
 
         const orderLog = {
             "user": user,
+            "date": date,
             "orderItems": orderItems,
             "city": shippingAddress.city,
             "country": shippingAddress.country,

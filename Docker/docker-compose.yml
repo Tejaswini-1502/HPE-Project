@@ -48,8 +48,8 @@ services:
         source: C:/Personal/BMSCE/HPE_CTY/Docker/logstash.conf #path to logstash.conf on local system
         target: /usr/share/logstash/pipeline/logstash.conf
       - type: bind
-        source: C:/Personal/BMSCE/HPE_CTY/Docker/Bookstore.csv #path to logstash.conf on local system
-        target: /usr/share/logstash/data/sample.csv
+        source: C:/Personal/BMSCE/HPE_CTY/Bookstore.csv #path to logstash.conf on local system
+        target: /usr/share/logstash/data/books.csv
       - type: bind
         source: C:/Personal/BMSCE/HPE_CTY/orders.log
         target: /usr/share/logstash/data/order.log

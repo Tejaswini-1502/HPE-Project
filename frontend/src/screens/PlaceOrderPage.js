@@ -26,7 +26,7 @@ const PlaceOrderPage = () => {
 
     useEffect(() => {
         if(success){
-            navigate(`/order/${order._id}`)
+            navigate(`/orders/`)
         }
         // eslint-disable-next-line
     }, [navigate, success])
