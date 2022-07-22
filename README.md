@@ -11,3 +11,13 @@ To build a cloud application which is ingesting structured and unstructured data
 - The real time data which will initially be in the hot storage will have a higher replica count. A Reduction in the number of replicas upon moving to cold storage is done in order to save storage space by 60%.
 
 - Alerts are set-up based on the incoming traffic to the dashboard for an instance, for a certain interval to check if there are no customer orders coming in.
+
+### Architecture and Flow Diagram: 
+
+![architecture and flow diagram](architecture_diagram.png)
+
+### Metrics and Graphs: 
+
+![metrics and graphs](aws_visualisations.png)
+
+![metrics and graphs](aws_visualizations.png)
