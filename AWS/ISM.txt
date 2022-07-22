@@ -1,12 +1,12 @@
 {
-    "id": "CTY",
-    "seqNo": 23,
-    "primaryTerm": 1,
+    "id": "Hot_Cold_Storage",
+    "seqNo": 251,
+    "primaryTerm": 3,
     "policy": {
-        "policy_id": "CTY",
-        "description": "Index state management",
-        "last_updated_time": 1655895117720,
-        "schema_version": 15,
+        "policy_id": "Hot_Cold_Storage",
+        "description": "A policy that changes the replica count between hot and cold states for BookPoint application.",
+        "last_updated_time": 1658059008541,
+        "schema_version": 13,
         "error_notification": null,
         "default_state": "hot",
         "states": [
@@ -20,7 +20,7 @@
                             "delay": "1m"
                         },
                         "replica_count": {
-                            "number_of_replicas": 1
+                            "number_of_replicas": 5
                         }
                     }
                 ],
@@ -28,7 +28,7 @@
                     {
                         "state_name": "cold",
                         "conditions": {
-                            "min_index_age": "1d"
+                            "min_index_age": "20s"
                         }
                     }
                 ]
@@ -42,28 +42,9 @@
                             "backoff": "exponential",
                             "delay": "1m"
                         },
-                        "read_only": {}
-                    }
-                ],
-                "transitions": [
-                    {
-                        "state_name": "delete",
-                        "conditions": {
-                            "min_index_age": "1d"
+                        "replica_count": {
+                            "number_of_replicas": 2
                         }
-                    }
-                ]
-            },
-            {
-                "name": "delete",
-                "actions": [
-                    {
-                        "retry": {
-                            "count": 3,
-                            "backoff": "exponential",
-                            "delay": "1m"
-                        },
-                        "delete": {}
                     }
                 ],
                 "transitions": []
