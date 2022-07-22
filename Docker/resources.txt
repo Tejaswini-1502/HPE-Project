@@ -1,9 +1,0 @@
-==> Change max_map_count
-wsl -d docker-desktop | echo 262144 >> /proc/sys/vm/max_map_count | cat /proc/sys/vm/max_map_count
-
-https://stackoverflow.com/questions/42111566/elasticsearch-in-windows-docker-image-vm-max-map-count
-https://stackoverflow.com/questions/68608962/unable-to-run-logstash-with-file-configuration-on-docker
-
-Queries:
-SELECT COUNT(*) FROM hpe_cty_books
-SELECT COUNT(*) FROM hpe_cty_books_orders
