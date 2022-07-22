@@ -43,6 +43,9 @@ services:
     container_name: logstash
     ports:
       - 5044:5044
+    environment:
+      - DOCKER_DASHBOARD_USER=${DOCKER_DASHBOARD_USER}
+      - DOCKER_DASHBOARD_PASSWORD=${DOCKER_DASHBOARD_PASSWORD}
     volumes:
       - type: bind
         source: C:/Personal/BMSCE/HPE_CTY/Docker/logstash.conf #path to logstash.conf on local system

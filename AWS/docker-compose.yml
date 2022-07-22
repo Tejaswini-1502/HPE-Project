@@ -5,6 +5,10 @@ services:
     container_name: logstash-aws
     ports:
       - 5042:5042
+    environment:
+      - AWS_DOMAIN_ENDPOINT=${AWS_DOMAIN_ENDPOINT}
+      - AWS_DASHBOARD_USER=${AWS_DASHBOARD_USER}
+      - AWS_DASHBOARD_PASSWORD=${AWS_DASHBOARD_PASSWORD}
     volumes:
       - type: bind
         source: ./logstash.conf #path to logstash.conf on local system
