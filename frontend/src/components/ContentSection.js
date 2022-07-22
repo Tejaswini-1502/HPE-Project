@@ -22,7 +22,7 @@ function ContentSection({title, data}) {
             </div>
             <div className="book_sections_content" style={{ display: "flex", flexWrap: "wrap" }}>
                 {
-                    data.slice(0, 4).map((book) => {
+                    data.slice(0, 5).map((book) => {
                         return<BookCard book={book} key={book._id}/>
                     })
                 }
